@@ -1,6 +1,8 @@
 package id.my.hendisantika.springboothtmx
 
 import org.springframework.stereotype.Controller
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.servlet.ModelAndView
 
 /**
  * Created by IntelliJ IDEA.
@@ -20,4 +22,9 @@ class ProductsController {
         Product(desc = "The detail page for this product will only work when the requests lands on the same lamda.")
     )
 
+    @GetMapping("/products")
+    fun getProducts(): ModelAndView {
+        return ModelAndView("sites/products", mapOf("products" to products))
+    }
 }
+
