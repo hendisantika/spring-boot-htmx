@@ -37,4 +37,9 @@ class SpringBootHtmxApplicationTests {
             status { isOk() }
         }
     }
+
+    @Test
+    fun webjarsAreWorking() {
+        mockMvc.get("/webjars/bootstrap/js/bootstrap.bundle.min.js").andExpect { status { isOk() } }
+    }
 }
