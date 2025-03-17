@@ -2,6 +2,7 @@ package id.my.hendisantika.springboothtmx
 
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.servlet.ModelAndView
 
 /**
@@ -30,6 +31,11 @@ class ProductsController {
     @GetMapping("/products", headers = ["HX-Request=true"])
     fun getProductsHtmx(): ModelAndView {
         return ModelAndView("fragments/products", mapOf("products" to products))
+    }
+
+    @GetMapping("/products/{id}")
+    fun getProduct(@PathVariable id: String): ModelAndView {
+        return ModelAndView("sites/product", mapOf("product" to getProductById(id)))
     }
 }
 
