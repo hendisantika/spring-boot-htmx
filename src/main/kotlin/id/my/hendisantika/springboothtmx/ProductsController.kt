@@ -37,5 +37,11 @@ class ProductsController {
     fun getProduct(@PathVariable id: String): ModelAndView {
         return ModelAndView("sites/product", mapOf("product" to getProductById(id)))
     }
+
+    @GetMapping("/products/{id}", headers = ["HX-Request=true"])
+    fun getProductHtmx(@PathVariable id: String): ModelAndView {
+        Thread.sleep(1000)
+        return ModelAndView("fragments/product", mapOf("product" to getProductById(id)))
+    }
 }
 
