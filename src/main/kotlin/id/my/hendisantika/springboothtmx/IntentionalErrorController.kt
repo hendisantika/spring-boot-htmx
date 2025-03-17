@@ -22,4 +22,10 @@ class IntentionalErrorController {
     fun triggerError(): ModelAndView {
         return ModelAndView("sites/my-error", HttpStatus.BAD_REQUEST)
     }
+
+    @GetMapping("exception")
+    fun triggerException(): ModelAndView {
+        throw NotImplementedError("This is not implemented yet")
+    }
+
 }
