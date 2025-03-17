@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.servlet.ModelAndView
+import org.webjars.NotFoundException
 
 /**
  * Created by IntelliJ IDEA.
@@ -42,6 +43,14 @@ class ProductsController {
     fun getProductHtmx(@PathVariable id: String): ModelAndView {
         Thread.sleep(1000)
         return ModelAndView("fragments/product", mapOf("product" to getProductById(id)))
+    }
+
+    private fun getProductById(id: String): Product {
+        val product = products.findLast { product -> product.id == id }
+        if (product === null) {
+            throw NotFoundException("The requested product was not found")
+        }
+        return product
     }
 }
 
