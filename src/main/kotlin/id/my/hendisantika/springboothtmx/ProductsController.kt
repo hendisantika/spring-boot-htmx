@@ -26,5 +26,10 @@ class ProductsController {
     fun getProducts(): ModelAndView {
         return ModelAndView("sites/products", mapOf("products" to products))
     }
+
+    @GetMapping("/products", headers = ["HX-Request=true"])
+    fun getProductsHtmx(): ModelAndView {
+        return ModelAndView("fragments/products", mapOf("products" to products))
+    }
 }
 
