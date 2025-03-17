@@ -46,3 +46,16 @@ kotlin {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+task buildZip(type: Zip) {
+    from compileJava
+    from compileKotlin
+    from processResources
+    into('lib') {
+        from(configurations.compileClasspath) {
+            exclude 'tomcat-embed-*'
+        }
+    }
+}
+
+build.dependsOn buildZip
