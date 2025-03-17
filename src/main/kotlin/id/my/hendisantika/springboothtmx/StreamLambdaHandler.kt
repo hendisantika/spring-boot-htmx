@@ -1,10 +1,5 @@
 package id.my.hendisantika.springboothtmx
 
-import io.micrometer.observation.Observation
-import java.io.IOException
-import java.io.InputStream
-import java.io.OutputStream
-
 /**
  * Created by IntelliJ IDEA.
  * Project : spring-boot-htmx
@@ -16,10 +11,23 @@ import java.io.OutputStream
  * Time: 23.34
  * To change this template use File | Settings | File Templates.
  */
-class StreamLambdaHandler : RequestStreamHandler {
-    @Throws(IOException::class)
-    override fun handleRequest(inputStream: InputStream, outputStream: OutputStream, context: Observation.Context) {
-        handler!!.proxyStream(inputStream, outputStream, context)
-    }
-
-}
+//class StreamLambdaHandler : RequestStreamHandler {
+//    @Throws(IOException::class)
+//    override fun handleRequest(inputStream: InputStream, outputStream: OutputStream, context: Observation.Context) {
+//        handler!!.proxyStream(inputStream, outputStream, context)
+//    }
+//
+//    companion object {
+//        private var handler: SpringBootLambdaContainerHandler<HttpApiV2ProxyRequest, AwsProxyResponse>? = null
+//
+//        init {
+//            try {
+//                handler = SpringBootLambdaContainerHandler.getHttpApiV2ProxyHandler(SseDemoApplication::class.java)
+//            } catch (e: ContainerInitializationException) {
+//                // if we fail here. We re-throw the exception to force another cold start
+//                e.printStackTrace()
+//                throw RuntimeException("Could not initialize Spring Boot application", e)
+//            }
+//        }
+//    }
+//}
