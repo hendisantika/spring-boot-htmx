@@ -7,5 +7,5 @@
     with javascript disabled.</p>
 <p>The relevant blogpost can be read on my <a
             href="https://www.codecentric.de/wissens-hub/blog/spring-boot-and-htmx-the-boring-app">employers blog</a> or
-    on my <a href="https://github.com/mircohacker/Spring-Boot-and-HTMX">GitHub</a>
+    on my <a href="https://github.com/hendisantika/spring-boot-htmx">GitHub</a>
 </p>
