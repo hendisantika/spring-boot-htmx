@@ -1,5 +1,6 @@
 package id.my.hendisantika.springboothtmx
 
+import org.hamcrest.core.IsNot
 import org.hamcrest.core.StringContains
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -22,5 +23,18 @@ class SpringBootHtmxApplicationTests {
                 content { string(StringContains("<!doctype html>")) }
                 status { isOk() }
             }
+    }
+
+    @Test
+    fun indexContentIsServedWithHtmx() {
+        mockMvc.get("/")
+        {
+            headers {
+                set("HX-Request", "true")
+            }
+        }.andExpect {
+            content { string(IsNot(StringContains("<!doctype html>"))) }
+            status { isOk() }
+        }
     }
 }
