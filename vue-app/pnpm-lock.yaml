@@ -43,7 +43,7 @@ importers:
         specifier: ^8.57.0
         version: 8.57.1(supports-color@7.2.0)
       eslint-plugin-vue:
-        specifier: ^9.23.0
+        specifier: ^9.33.0
         version: 9.33.0(eslint@8.57.1(supports-color@7.2.0))(supports-color@7.2.0)
       jsdom:
         specifier: ^24.0.0
