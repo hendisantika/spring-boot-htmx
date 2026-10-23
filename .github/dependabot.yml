@@ -1,13 +1,88 @@
 version: 2
 updates:
+  # Spring Boot / Kotlin backend (build.gradle + Gradle wrapper)
   - package-ecosystem: gradle
     directory: "/"
     schedule:
       interval: daily
-      time: '05:00'
+      time: "05:00"
       timezone: Asia/Jakarta
     open-pull-requests-limit: 10
-  - package-ecosystem: "github-actions"
+    labels:
+      - dependencies
+      - java
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: scope
+    groups:
+      spring-boot:
+        patterns:
+          - "org.springframework.boot*"
+          - "io.spring.dependency-management"
+      kotlin:
+        patterns:
+          - "org.jetbrains.kotlin*"
+      webjars:
+        patterns:
+          - "org.webjars*"
+      aws:
+        patterns:
+          - "com.amazonaws*"
+      gradle-minor-patch:
+        update-types:
+          - minor
+          - patch
+
+  # Embedded Vue app (pnpm)
+  - package-ecosystem: npm
+    directory: "/vue-app"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "05:00"
+      timezone: Asia/Jakarta
+    open-pull-requests-limit: 10
+    labels:
+      - dependencies
+      - javascript
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: scope
+    groups:
+      vue:
+        patterns:
+          - "vue"
+          - "vue-*"
+          - "@vue/*"
+          - "pinia"
+      vite-vitest:
+        patterns:
+          - "vite"
+          - "vitest"
+          - "@vitejs/*"
+          - "@vitest/*"
+      npm-minor-patch:
+        update-types:
+          - minor
+          - patch
+
+  # GitHub Actions workflows
+  - package-ecosystem: github-actions
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: weekly
+      day: monday
+      time: "05:00"
+      timezone: Asia/Jakarta
+    labels:
+      - dependencies
+      - github_actions
+    commit-message:
+      prefix: "ci"
+      include: scope
+    groups:
+      github-actions:
+        patterns:
+          - "*"
