@@ -1,10 +1,11 @@
 package id.my.hendisantika.springboothtmx
 
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.servlet.ModelAndView
-import org.webjars.NotFoundException
+import org.springframework.web.server.ResponseStatusException
 
 /**
  * Created by IntelliJ IDEA.
@@ -48,7 +49,7 @@ class ProductsController {
     private fun getProductById(id: String): Product {
         val product = products.findLast { product -> product.id == id }
         if (product === null) {
-            throw NotFoundException("The requested product was not found")
+            throw ResponseStatusException(HttpStatus.NOT_FOUND, "The requested product was not found")
         }
         return product
     }
